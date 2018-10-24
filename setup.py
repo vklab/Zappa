@@ -29,7 +29,7 @@ with open(os.path.join(os.path.dirname(__file__), 'test_requirements.txt')) as f
 
 setup(
     name='zappa',
-    version=__version__,
+    version='0.46.2-vklabs1',
     packages=['zappa'],
     install_requires=required,
     tests_require=test_required,

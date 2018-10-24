@@ -36,9 +36,12 @@ def copytree(src, dst, metadata=True, symlinks=False, ignore=None):
             shutil.copystat(src, dst)
     lst = os.listdir(src)
 
+    def is_boto3_safe(s):
+        return s == 'boto3' and src.endswith('vklabs')
+
     if ignore:
         excl = ignore(src, lst)
-        lst = [x for x in lst if x not in excl]
+        lst = [x for x in lst if is_boto3_safe(x) or x not in excl]
 
     for item in lst:
         s = os.path.join(src, item)
