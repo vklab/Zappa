@@ -510,8 +510,15 @@ class Zappa(object):
 
         # Make sure that 'concurrent' is always forbidden.
         # https://github.com/Miserlou/Zappa/issues/827
-        if not 'concurrent' in exclude:
-            exclude.append('concurrent')
+        always_exclude = [
+            "boto3",
+            "botocore",
+            "s3transfer",
+            "concurrent"
+        ]
+        for key in always_exclude:
+            if key not in exclude:
+                exclude.append(key)
 
         def splitpath(path):
             parts = []

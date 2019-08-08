@@ -2237,25 +2237,11 @@ class ZappaCLI(object):
                 # Exclude packages already builtin to the python lambda environment
                 # Related: https://github.com/Miserlou/Zappa/issues/556
                 exclude = self.stage_config.get(
-                        'exclude', [
-                                        "boto3",
-                                        "dateutil",
-                                        "botocore",
-                                        "s3transfer",
-                                        "six.py",
-                                        "jmespath",
-                                        "concurrent"
-                                    ])
+                        'exclude', [])
             else:
                 # This could be python3.6 optimized.
                 exclude = self.stage_config.get(
-                        'exclude', [
-                                        "boto3",
-                                        "dateutil",
-                                        "botocore",
-                                        "s3transfer",
-                                        "concurrent"
-                                    ])
+                        'exclude', [])
 
             # Create a single zip that has the handler and application
             self.zip_path = self.zappa.create_lambda_zip(

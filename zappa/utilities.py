@@ -33,7 +33,6 @@ def copytree(src, dst, metadata=True, symlinks=False, ignore=None):
     When `metadata` is False, file metadata such as permissions and modification
     times are not copied.
     """
-
     if not os.path.exists(dst):
         os.makedirs(dst)
         if metadata:
