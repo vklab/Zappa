@@ -508,18 +508,6 @@ class Zappa(object):
         # Exclude the zip itself
         exclude.append(archive_path)
 
-        # Make sure that 'concurrent' is always forbidden.
-        # https://github.com/Miserlou/Zappa/issues/827
-        always_exclude = [
-            "boto3",
-            "botocore",
-            "s3transfer",
-            "concurrent"
-        ]
-        for key in always_exclude:
-            if key not in exclude:
-                exclude.append(key)
-
         def splitpath(path):
             parts = []
             (path, tail) = os.path.split(path)
